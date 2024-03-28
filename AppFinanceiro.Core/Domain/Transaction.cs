@@ -1,4 +1,5 @@
 ﻿using AppFinanceiro.Core.Domain.Base;
+using AppFinanceiro.Core.Enums;
 
 namespace AppFinanceiro.Core.Domain
 {

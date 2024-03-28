@@ -1,39 +1,43 @@
-﻿using AppFinanceiro.Core.Domain;
-using AppFinanceiro.Core.Interfaces.Base;
-
+﻿using AppFinanceiro.Core.Interfaces.Base;
+using AppFinanceiro.Dal.Context.Interfaces;
+using LiteDB;
 
 namespace AppFinanceiro.Dal.Repositories.Base
 {
-    public class BaseRepository : IBaseRepository<Transaction>
+    public class BaseRepository<T> : IBaseRepository<T> where T : new()
     {
-        public List<Transaction> GetAll()
+        private IDbContext _context;
+        protected readonly LiteCollection<T> _collection;
+        public BaseRepository(IDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+            _collection = _context.GetCollection<T>();
+
+        }
+        public virtual IEnumerable<T> GetAll()
+        {
+            return _collection.FindAll();
         }
 
-        public void Add(Transaction item)
+        public virtual T GetById(BsonValue id)
         {
-            throw new NotImplementedException();
+            return _collection.FindById(id);
         }
 
-        public void Update(Transaction item)
+        public virtual void Insert(T entity)
         {
-            throw new NotImplementedException();
+            _collection.Insert(entity);
         }
 
-        public void Delete(Transaction item)
+        public virtual bool Update(T entity)
         {
-            throw new NotImplementedException();
+            return _collection.Update(entity);
         }
 
-        public void DeleteAll()
+        public virtual bool Delete(BsonValue id)
         {
-            throw new NotImplementedException();
+            return _collection.Delete(id);
         }
 
-        public Transaction GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

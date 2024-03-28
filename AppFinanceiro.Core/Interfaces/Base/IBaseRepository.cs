@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LiteDB;
 
 namespace AppFinanceiro.Core.Interfaces.Base
 {
     public interface IBaseRepository<T>
     {
-        public List<T> GetAll();
-        public void Add(T item);
-        public void Update(T item);
-        public void Delete(T item);
-        public void DeleteAll();
-        public T GetById(int id);
+        IEnumerable<T> GetAll();
+        T GetById(BsonValue id);
+        void Insert(T entity);
+        bool Update(T entity);
+        bool Delete(BsonValue id);
     }
 }

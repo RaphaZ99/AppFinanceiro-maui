@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFinanceiro", "AppFinanceiro\AppFinanceiro.csproj", "{A895875B-EA7C-4E62-8C4C-8ADFF6F9F5A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppFinanceiro", "AppFinanceiro\AppFinanceiro.csproj", "{A895875B-EA7C-4E62-8C4C-8ADFF6F9F5A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFinanceiro.Core", "AppFinanceiro.Core\AppFinanceiro.Core.csproj", "{6750B954-DE34-48C7-8368-E42D904374C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppFinanceiro.Core", "AppFinanceiro.Core\AppFinanceiro.Core.csproj", "{6750B954-DE34-48C7-8368-E42D904374C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFinanceiro.Dal", "AppFinanceiro.Dal\AppFinanceiro.Dal.csproj", "{461CA8C6-C3BD-4918-96AC-8BF52722820A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppFinanceiro.Dal", "AppFinanceiro.Dal\AppFinanceiro.Dal.csproj", "{461CA8C6-C3BD-4918-96AC-8BF52722820A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFinanceiro.Application", "AppFinanceiro.Application\AppFinanceiro.Application.csproj", "{5312DD7F-E65F-428E-8358-524FB435B369}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{461CA8C6-C3BD-4918-96AC-8BF52722820A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{461CA8C6-C3BD-4918-96AC-8BF52722820A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{461CA8C6-C3BD-4918-96AC-8BF52722820A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5312DD7F-E65F-428E-8358-524FB435B369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5312DD7F-E65F-428E-8358-524FB435B369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5312DD7F-E65F-428E-8358-524FB435B369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5312DD7F-E65F-428E-8358-524FB435B369}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
