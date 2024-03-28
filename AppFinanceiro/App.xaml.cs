@@ -1,4 +1,6 @@
-﻿namespace AppFinanceiro
+﻿using AppFinanceiro.Views.Transaction;
+
+namespace AppFinanceiro
 {
     public partial class App : Application
     {
@@ -6,7 +8,7 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new TransactionList();
         }
     }
 }

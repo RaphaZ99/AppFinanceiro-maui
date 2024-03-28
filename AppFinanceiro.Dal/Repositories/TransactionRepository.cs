@@ -10,6 +10,10 @@ namespace AppFinanceiro.Dal.Repositories
         public TransactionRepository(IDbContext context) : base(context)
         {
         }
-         
+
+        public override IEnumerable<Transaction> GetAll()
+        {
+            return _collection.Query().OrderBy(x => x.Date).ToList();
+        }
     }
 }

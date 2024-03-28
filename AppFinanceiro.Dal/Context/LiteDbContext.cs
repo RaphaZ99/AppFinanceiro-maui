@@ -7,9 +7,9 @@ namespace AppFinanceiro.Dal.Context
     {
         private readonly LiteDatabase _database;
 
-        public LiteDbContext()
+        public LiteDbContext(string databasePath)
         {
-            _database = new LiteDatabase("Filename=C://users/finance.db;Connection=Shared");
+            _database = new LiteDatabase(databasePath);
         }
 
         public LiteCollection<T> GetCollection<T>() where T : new()

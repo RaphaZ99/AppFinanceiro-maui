@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppFinanceiro.Views.Transaction.TransactionAdd"
+             Title="TransactionAdd">
+    <VerticalStackLayout Spacing="30">
+        <Border BackgroundColor="Black" Stroke="Transparent" Margin="15" Padding="15" StrokeShape="RoundRectangle 30">
+            <Grid Margin="30,0" RowDefinitions="Auto" ColumnDefinitions="*,30">
+                <Label 
+            Text="Novo"
+            HorizontalOptions="Center" 
+            Grid.Row="0"
+            Grid.Column="0"
+            TextColor="White"/>
+                <Label Text="X" 
+               HorizontalOptions="Center" 
+               Grid.Row="0"
+               Grid.Column="1"
+               TextColor="AliceBlue"/>
+            </Grid>
+        </Border>
+
+        <Entry Placeholder="Nome" Margin="15,0"></Entry>
+
+        <DatePicker Margin="15,0"></DatePicker>
+
+        <Entry Placeholder="Valor" Margin="15,0"></Entry>
+
+        <Button Text="Salvar" Margin="15,0" HorizontalOptions="Center" />
+
+    </VerticalStackLayout>
+
+</ContentPage>
