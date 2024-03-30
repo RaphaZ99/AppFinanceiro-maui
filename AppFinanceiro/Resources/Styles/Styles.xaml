@@ -24,13 +24,15 @@
     </Style>
 
     <Style TargetType="Button">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource PrimaryDarkText}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontAttributes" Value="Bold"></Setter>
         <Setter Property="FontSize" Value="14"/>
+        <Setter Property="TextTransform" Value="Uppercase"/>
         <Setter Property="BorderWidth" Value="0"/>
-        <Setter Property="CornerRadius" Value="8"/>
-        <Setter Property="Padding" Value="14,10"/>
+        <Setter Property="CornerRadius" Value="22"/>
+        <Setter Property="Padding" Value="30,10"/>
         <Setter Property="MinimumHeightRequest" Value="44"/>
         <Setter Property="MinimumWidthRequest" Value="44"/>
         <Setter Property="VisualStateManager.VisualStateGroups">
@@ -394,7 +396,15 @@
 
     <Style TargetType="Page" ApplyToDerivedTypes="True">
         <Setter Property="Padding" Value="0"/>
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1" >
+                    <GradientStop Offset="0.0" Color="#f3f4f1"/>
+                    <GradientStop Offset="1.0" Color="#D7D8D5"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+
     </Style>
 
     <Style TargetType="Shell" ApplyToDerivedTypes="True">

@@ -1,13 +1,74 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:AppFinanceiro.Helpers"
              x:Class="AppFinanceiro.Views.Transaction.TransactionList"
-             Title="TransactionList">
+             Title="TransactionList"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary Source="/Resources/Styles/Colors.xaml"></ResourceDictionary>
+        <ResourceDictionary>
+            <converters:TransactionColorValueConverter x:Key="TransactionColorConverter"></converters:TransactionColorValueConverter>
+            <converters:TransactionValueConverter x:Key="TransactionValueConverter"></converters:TransactionValueConverter>
+            <converters:TransactionFirtsLetterConverter x:Key="TransactionFirstLetterConverter"></converters:TransactionFirtsLetterConverter>
+            <converters:TransactionCircleFirstLetterColorConverter x:Key="TransactionCircleFirstLetterColorConverter"></converters:TransactionCircleFirstLetterColorConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI RAPHA!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Button Text="Adicionar" Clicked="OnButtonClicked_To_TransactionAdd"></Button>
+        <CollectionView x:Name="CollectionViewTransactions">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid  Padding="15" ColumnDefinitions="50,*,Auto">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="{Binding }" Tapped="TapGestureRecognizer_Tapped_To_TransactionEdit">
+                            </TapGestureRecognizer>
+                        </Grid.GestureRecognizers>
+                        <Border BackgroundColor="{Binding Name , Converter={StaticResource TransactionCircleFirstLetterColorConverter}}" WidthRequest="40" HeightRequest="40" StrokeShape="RoundRectangle 20" >
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer  CommandParameter="{Binding }" Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                            </Border.GestureRecognizers>
+                            <Label HorizontalOptions="Center" 
+                                   VerticalOptions="Center" 
+                                   Text="{Binding ., Converter={StaticResource TransactionFirstLetterConverter}}"></Label>
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="{Binding Name}" />
+                            <Label Text="{Binding Date,StringFormat='{0:dd/MM/yyyy}'}"></Label>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="2" Text="{Binding ., Converter={StaticResource TransactionValueConverter}}" TextColor="{Binding ., Converter={StaticResource TransactionColorConverter}}"></Label>
+
+                    </Grid>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!--<Button Text="Adicionar" Clicked="OnButtonClicked_To_TransactionAdd" HorizontalOptions="Center"></Button>
+        <Button Text="Editar" Clicked="OnButtonClicked_To_TransactionEdit" HorizontalOptions="Center"></Button>-->
+
+        <Border Margin="10" Padding="15" BackgroundColor="{StaticResource Black}" StrokeThickness="0" StrokeShape="RoundRectangle 40">
+            <Grid ColumnDefinitions="*,80" RowDefinitions="Auto,Auto,30,Auto,Auto">
+                <Label Text="Saldo" FontSize="18" TextColor="#979797"></Label>
+                <Label x:Name="ValueBalance" Text="R$ 2.769,00" FontSize="36" TextColor="White" Grid.Row="1"></Label>
+                <Button Clicked="OnButtonClicked_To_TransactionAdd"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    FontSize="48"
+                    WidthRequest="54"
+                    HeightRequest="54"
+                    Padding="-10"
+                    CornerRadius="25"                    
+                    Text="+" 
+                    Grid.Column="1"
+                    Grid.RowSpan="2" />
+
+                <Label Text="Receitas"  TextColor="#979797"  Grid.Row="3"></Label>
+                <Label x:Name="ValueIncome" TextColor="White" Grid.Row="4"></Label>
+
+                <Label Text="Despesas"  TextColor="#979797" Grid.Row="3" Grid.Column="1"></Label>
+                <Label x:Name="ValueExpense" TextColor="White" Grid.Row="4" Grid.Column="1"></Label>
+            </Grid>
+        </Border>
     </VerticalStackLayout>
 </ContentPage>

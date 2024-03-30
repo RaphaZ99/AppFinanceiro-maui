@@ -1,14 +1,16 @@
-﻿using AppFinanceiro.Views.Transaction;
+﻿using AppFinanceiro.Core.Interfaces;
+using AppFinanceiro.Views.Transaction;
 
 namespace AppFinanceiro
 {
     public partial class App : Application
     {
-        public App()
+
+        public App(ITransactionRepository transactionRepository)
         {
             InitializeComponent();
 
-            MainPage = new TransactionList();
+            MainPage = new NavigationPage(new TransactionList(transactionRepository));
         }
     }
 }
