@@ -33,7 +33,7 @@ public partial class TransactionEdit : ContentPage
 
         };
 
-        _transactionRepository.Insert(transaction);
+        _transactionRepository.Update(transaction);
 
         WeakReferenceMessenger.Default.Send<string>(string.Empty);
 
