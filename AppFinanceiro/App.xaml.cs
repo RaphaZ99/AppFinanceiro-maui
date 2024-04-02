@@ -1,16 +1,15 @@
-﻿using AppFinanceiro.Core.Interfaces;
+﻿using AppFinanceiro.Application.Services.Interfaces;
 using AppFinanceiro.Views.Transaction;
 
 namespace AppFinanceiro
 {
-    public partial class App : Application
+    public partial class App : Microsoft.Maui.Controls.Application
     {
-
-        public App(ITransactionRepository transactionRepository)
+        public App(ITransactionService service)
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new TransactionList(transactionRepository));
+            MainPage = new NavigationPage(new TransactionList(service));
         }
     }
 }

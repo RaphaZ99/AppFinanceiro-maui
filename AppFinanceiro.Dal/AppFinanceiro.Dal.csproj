@@ -7,15 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Extensions\**" />
+    <EmbeddedResource Remove="Extensions\**" />
+    <None Remove="Extensions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AppFinanceiro.Core\AppFinanceiro.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="LiteDB" Version="5.0.19" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Extensions\" />
   </ItemGroup>
 
 </Project>

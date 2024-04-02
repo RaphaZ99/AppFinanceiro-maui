@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppFinanceiro.Core", "AppFi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppFinanceiro.Dal", "AppFinanceiro.Dal\AppFinanceiro.Dal.csproj", "{461CA8C6-C3BD-4918-96AC-8BF52722820A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFinanceiro.Application", "AppFinanceiro.Application\AppFinanceiro.Application.csproj", "{5312DD7F-E65F-428E-8358-524FB435B369}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppFinanceiro.Application", "AppFinanceiro.Application\AppFinanceiro.Application.csproj", "{5312DD7F-E65F-428E-8358-524FB435B369}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,7 @@
-﻿using AppFinanceiro.Core.Interfaces;
+﻿using AppFinanceiro.Application.Services;
+using AppFinanceiro.Application.Services.Base;
+using AppFinanceiro.Application.Services.Interfaces;
+using AppFinanceiro.Core.Interfaces;
 using AppFinanceiro.Dal.Context;
 using AppFinanceiro.Dal.Context.Interfaces;
 using AppFinanceiro.Dal.Repositories;
@@ -36,6 +39,7 @@ namespace AppFinanceiro
         {
             mauiAppBuilder.Services.AddSingleton<IDbContext>(_ => new LiteDbContext(AppSettings.DatabasePath));
             mauiAppBuilder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+            mauiAppBuilder.Services.AddScoped<ITransactionService, TransactionService>();
 
             return mauiAppBuilder;
         }

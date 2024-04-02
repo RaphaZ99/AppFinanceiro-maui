@@ -1,17 +1,16 @@
-using AppFinanceiro.Core.Domain;
-using AppFinanceiro.Core.Interfaces;
+using AppFinanceiro.Application.Services.Interfaces;
 using CommunityToolkit.Mvvm.Messaging;
 
 namespace AppFinanceiro.Views.Transaction;
 
 public partial class TransactionEdit : ContentPage
 {
-    private readonly ITransactionRepository _transactionRepository;
+    private readonly ITransactionService _service;
     private Core.Domain.Transaction _transaction;
-    public TransactionEdit(ITransactionRepository transactionRepository)
+    public TransactionEdit(ITransactionService service)
     {
         InitializeComponent();
-        _transactionRepository = transactionRepository;
+        _service = service;
     }
 
     private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
@@ -33,7 +32,7 @@ public partial class TransactionEdit : ContentPage
 
         };
 
-        _transactionRepository.Update(transaction);
+        await _service.Update(transaction);
 
         WeakReferenceMessenger.Default.Send<string>(string.Empty);
 

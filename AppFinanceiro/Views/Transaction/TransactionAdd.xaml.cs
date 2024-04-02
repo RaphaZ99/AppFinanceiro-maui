@@ -1,17 +1,15 @@
-using AppFinanceiro.Core.Domain;
-using AppFinanceiro.Core.Interfaces;
+using AppFinanceiro.Application.Services.Interfaces;
 using CommunityToolkit.Mvvm.Messaging;
-using System.Text;
 
 namespace AppFinanceiro.Views.Transaction;
 
 public partial class TransactionAdd : ContentPage
 {
-    private readonly ITransactionRepository _transactionRepository;
-    public TransactionAdd(ITransactionRepository transactionRepository)
+    private readonly ITransactionService _service ;
+    public TransactionAdd(ITransactionService service)
     {
         InitializeComponent();
-        _transactionRepository = transactionRepository;
+        _service = service;
     }
 
     private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
@@ -33,12 +31,12 @@ public partial class TransactionAdd : ContentPage
 
         };
 
-        _transactionRepository.Insert(transaction);
+        await _service.Save(transaction);
 
         WeakReferenceMessenger.Default.Send<string>(string.Empty);
      
        await Navigation.PopModalAsync();
-
+         
     }
 
     private bool isValidData()

@@ -14,30 +14,33 @@ namespace AppFinanceiro.Dal.Repositories.Base
             _collection = _context.GetCollection<T>();
 
         }
-        public virtual IEnumerable<T> GetAll()
+
+        public async Task<List<T>> GetAll()
         {
-            return _collection.FindAll();
+            return  _collection.FindAll().ToList();
         }
 
-        public virtual T GetById(BsonValue id)
+        public async Task<T> GetById(BsonValue id)
         {
             return _collection.FindById(id);
         }
 
-        public virtual void Insert(T entity)
+        public async Task<T> Insert(T entity)
         {
-            _collection.Insert(entity);
+           _collection.Insert(entity);
+
+            return entity;
         }
 
-        public virtual bool Update(T entity)
+        public async Task<bool> Update(T entity)
         {
             return _collection.Update(entity);
         }
 
-        public virtual bool Delete(BsonValue id)
+        public async Task<bool> Delete(BsonValue id)
         {
             return _collection.Delete(id);
         }
-
+         
     }
 }

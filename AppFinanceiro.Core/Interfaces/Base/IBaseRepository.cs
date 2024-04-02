@@ -4,10 +4,10 @@ namespace AppFinanceiro.Core.Interfaces.Base
 {
     public interface IBaseRepository<T>
     {
-        IEnumerable<T> GetAll();
-        T GetById(BsonValue id);
-        void Insert(T entity);
-        bool Update(T entity);
-        bool Delete(BsonValue id);
+        Task<List<T>> GetAll();
+        Task<T> GetById(BsonValue id);
+        Task<T> Insert(T entity);
+        Task<bool> Update(T entity);
+        Task<bool> Delete(BsonValue id);
     }
 }

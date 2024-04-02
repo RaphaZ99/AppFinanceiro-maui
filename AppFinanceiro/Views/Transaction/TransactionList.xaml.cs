@@ -1,18 +1,18 @@
-using AppFinanceiro.Core.Interfaces;
+using AppFinanceiro.Application.Services.Interfaces;
 using CommunityToolkit.Mvvm.Messaging;
 
 namespace AppFinanceiro.Views.Transaction;
 
 public partial class TransactionList : ContentPage
 {
-    private readonly ITransactionRepository _transactionRepository;
+    private readonly ITransactionService _service;
     private Color _initialBackgroundStateBorder;
     private string _initialNameTextBorder;
 
-    public TransactionList(ITransactionRepository transactionRepository)
+    public TransactionList(ITransactionService service)
     {
         InitializeComponent();
-        _transactionRepository = transactionRepository;
+        _service = service;
         BindInfo();
 
         WeakReferenceMessenger.Default.Register<string>(this, (e, msg) =>
@@ -32,9 +32,9 @@ public partial class TransactionList : ContentPage
         await Navigation.PushModalAsync(Handler?.MauiContext?.Services.GetService<TransactionEdit>());
     }
 
-    private void BindInfo()
+    private async void BindInfo()
     {
-        var items = _transactionRepository.GetAll().ToList();
+        var items = await _service.GetAll() ;
                 
             CollectionViewTransactions.ItemsSource = items;
 
@@ -70,7 +70,8 @@ public partial class TransactionList : ContentPage
         {
             var transaction = (Core.Domain.Transaction)e.Parameter;
 
-            _transactionRepository.Delete(transaction.Id);
+           await  _service.DeleteById(transaction.Id);
+
             BindInfo();
         }
         else

@@ -67,11 +67,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\AppFinanceiro.Core\AppFinanceiro.Core.csproj" />
-	  <ProjectReference Include="..\AppFinanceiro.Dal\AppFinanceiro.Dal.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiXaml Update="Views\Transaction\TransactionAdd.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -85,6 +80,11 @@
 
 	<ItemGroup>
 	  <Folder Include="Data\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\AppFinanceiro.Application\AppFinanceiro.Application.csproj" />
+	  <ProjectReference Include="..\AppFinanceiro.Dal\AppFinanceiro.Dal.csproj" />
 	</ItemGroup>
 
 </Project>
